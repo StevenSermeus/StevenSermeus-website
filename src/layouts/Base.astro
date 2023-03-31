@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+}
+
+import Navbar from "@components/Navbar.astro";
+
+const { title } = Astro.props;
+const theme = localStorage.getItem("theme") || "light";
+const date = new Date();
+const year = date.getFullYear();
+---
+
+<!DOCTYPE html>
+<html data-theme={theme}>
+  <head>
+    <title>{title} | Steven Sermeus</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <Navbar />
+      <slot />
+    </div>
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+      <div>
+        <p>
+          Copyright © {year} - Steven Sermeus
+        </p>
+        <p>
+          Powered by <a class="link" href="https://astro.build/">Astro</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

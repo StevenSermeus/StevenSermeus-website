@@ -1,0 +1,25 @@
+---
+import Base from "@layouts/Base.astro";
+import type { FrontmatterType } from "@types";
+import type { MarkdownInstance } from "astro";
+
+const posts: MarkdownInstance<FrontmatterType>[] = await Astro.glob("./*.md");
+// const posts = await Astro.glob("./*.md");
+---
+
+<Base title="Blog">
+  <div>
+    <h1>Blog</h1>
+    <div>
+      {
+        posts.map((post, index) => {
+          return (
+            <div>
+              {post.frontmatter.title} {index}
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</Base>
