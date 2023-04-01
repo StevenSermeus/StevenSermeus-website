@@ -1,9 +1,10 @@
 FROM node:lts AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install -g pnpm
+RUN pnpm install
 COPY . .
-RUN npm run build -- --mode custom
+RUN pnpm run build -- --mode custom
 
 FROM nginx:alpine AS runtime
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
