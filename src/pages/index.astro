@@ -1,6 +1,11 @@
 ---
 import Base from "@layouts/Base.astro";
-import Theme from "@components/Theme.astro";
+import { Image } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import { formatDate } from "@utils";
+const posts = await Astro.glob("./blog/*.md");
+const postsCount = posts.length;
+
 const frontmatter = {
   type: "website",
   title: "Welcome",
@@ -27,19 +32,70 @@ const frontmatter = {
 >
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col lg:flex-row">
-      <img
-        src="/images/stock/photo-1635805737707-575885ab0820.jpg"
-        class="max-w-sm rounded-lg shadow-2xl"
-      />
+      <div class="max-w-sm rounded-lg">
+        <Image
+          src="/assets/steven.png"
+          alt="Astro"
+          width={500}
+          height={500}
+          class="rounded-lg md:w-full"
+        />
+      </div>
       <div>
-        <h1 class="text-5xl font-bold">Box Office News!</h1>
-        <p class="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+        <h1 class="text-2xl md:text-4xl font-bold">Steven Sermeus</h1>
+        <p class="py-6 text-xl">
+          Bienvenue sur mon site web ! Je suis Steven Sermeus, développeur web
+          fullstack. Je suis étudiant en fin de cycle d'un bachelier
+          d'informatique de gestion à<a
+            href="https://www.henallux.be/"
+            target="_blank"
+            class="link"
+          >
+            la Haute Ecole Liège Luxembourg Namur (HENALLUX)
+          </a> . Je suis passionné par le développement et l'open-source.
         </p>
-        <button class="btn btn-primary">Get Started</button>
+
+        <h3 class="text-2xl mb-3 mt-5 font-bold underline">
+          Mes Réseaux Sociaux
+        </h3>
+        <div class="flex flex-row">
+          <a href="https://github.com/StevenSermeus" target="_blank">
+            <Icon name="mdi:github" size="3rem" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/steven-sermeus/?originalSubdomain=be"
+            target="_blank"
+          >
+            <Icon name="mdi:linkedin" size="3rem" />
+          </a>
+        </div>
+        <h3 class="text-2xl mb-3 mt-3 font-bold underline">
+          Mes technologies favorites
+        </h3>
+        <div
+          class="flex flex-row justify-between align-middle md:w-1/2 flex-wrap"
+        >
+          <Icon name="logos:react" size="3rem" />
+          <Icon name="logos:nextjs" size="4rem" />
+          <Icon name="logos:nodejs-icon" size="3rem" />
+          <Icon name="vscode-icons:file-type-typescript-official" size="3rem" />
+          <Icon name="logos:javascript" size="2.7rem" />
+          <Icon name="logos:tailwindcss-icon" size="3rem" />
+          <Icon name="logos:astro" size="3rem" />
+          <Icon name="logos:docker-icon" size="3rem" />
+          <Icon name="logos:python" size="3.5rem" />
+          <Icon name="logos:solidjs-icon" size="3rem" />
+          <Icon name="logos:postgresql" size="3rem" />
+          <Icon name="logos:linux-tux" size="3.5rem" />
+          <Icon name="logos:redis" size="2.7rem" />
+          <Icon name="logos:prisma" size="3rem" />
+          <Icon name="logos:java" size="3rem" />
+          <Icon name="vscode-icons:file-type-csharp2" size="3rem" />
+        </div>
       </div>
     </div>
+  </div>
+  <div>
+    <h2></h2>
   </div>
 </Base>

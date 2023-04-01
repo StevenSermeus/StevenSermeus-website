@@ -1,6 +1,7 @@
 ---
 import { formatDate } from "@utils";
 import { Icon } from "astro-icon";
+import { Image } from "@astrojs/image/components";
 export interface Props {
   title: string;
   body: string;
@@ -15,10 +16,9 @@ export interface Props {
 }
 //not sure why but if destructuring props here, it doesn't work
 const props = Astro.props;
-console.log(props);
 ---
 
-<li class="flex w-96 mt-5 mb-5">
+<li class="flex md:w-96 w-64 mt-5 mb-5">
   <a href={props.href}>
     <div
       class="indicator w-96 card bg-base-100 shadow-xl hover:scale-105 transition"
@@ -33,10 +33,12 @@ console.log(props);
       {
         props.image && (
           <figure class="px-10 pt-10">
-            <img
+            <Image
               src={"/assets/" + props.image}
               alt={props.alt || "image"}
-              class="rounded-xl"
+              width={1920}
+              height={1080}
+              class={"rounded-xl"}
             />
           </figure>
         )

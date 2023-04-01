@@ -17,9 +17,27 @@ import { formatDate } from "@utils";
 >
   <div class="md:w-2/4 mx-auto">
     <h1 class="text-4xl font-bold font-mono">{frontmatter.title}</h1>
-    <p class="text-gray-500 text-sm">
-      Publié le {formatDate(frontmatter.date)}
-    </p>
+    {
+      frontmatter.date && (
+        <p class="text-sm text-gray-500 mt-2 justify-end">
+          Publié le : {formatDate(frontmatter.date)}
+        </p>
+      )
+    }
+    {
+      frontmatter.tags?.map((tag) => (
+        <p class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm mt-2 font-semibold text-gray-700 mr-2 mb-2">
+          #{tag}
+        </p>
+      ))
+    }
+    {
+      frontmatter.author && (
+        <p class="text-sm text-gray-500 mt-2 justify-end">
+          Par : {frontmatter.author}
+        </p>
+      )
+    }
     <div class="w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500 my-4">
     </div>
     <div class="prose mt-10">

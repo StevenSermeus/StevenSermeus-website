@@ -4,17 +4,24 @@ import Base from "@layouts/Base.astro";
 import type { FrontmatterType } from "@types";
 import type { MarkdownInstance } from "astro";
 
-const postsNoOrder: MarkdownInstance<FrontmatterType>[] = await Astro.glob(
-  "./*.md"
-);
-//order post by date
+//@ts-ignore
+export async function getStaticPaths({ paginate }) {
+  const postsNoOrder: MarkdownInstance<FrontmatterType>[] = await Astro.glob(
+    "./*.md"
+  );
+  //order post by date
 
-const posts = postsNoOrder.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.date);
-  const dateB = new Date(b.frontmatter.date);
-  return dateB.getTime() - dateA.getTime();
-});
+  const posts = postsNoOrder.sort((a, b) => {
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
+    return dateB.getTime() - dateA.getTime();
+  });
 
+  return paginate(posts, {
+    pageSize: 4,
+  });
+}
+const { page } = Astro.props;
 const frontmatter = {
   type: "website",
   title: "Blog",
@@ -41,7 +48,8 @@ const frontmatter = {
     <h1 class="text-4xl font-bold text-center">Blog</h1>
     <ul class="flex-tow flex flex-wrap justify-around">
       {
-        posts.map((post, index) => {
+        //@ts-ignore
+        page.data.map((post, index) => {
           return (
             <Card
               title={post.frontmatter.title}
@@ -59,5 +67,15 @@ const frontmatter = {
         })
       }
     </ul>
+  </div>
+  <div
+    class="flex justify-center items-center"
+    style="margin-top: 2rem; margin-bottom: 2rem;"
+  >
+    <div class="btn-group">
+      <a class={"btn"} href={page.url.prev}>«</a>
+      <a class={"btn"}>{page.currentPage}</a>
+      <a class={"btn"} href={page.url.next}>»</a>
+    </div>
   </div>
 </Base>
