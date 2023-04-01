@@ -2,7 +2,7 @@ export type FrontmatterType = {
   title: string;
   author: string;
   date: string;
-  live?: boolean;
+  live?: string;
   tags?: string[];
   github?: string;
   description: string;

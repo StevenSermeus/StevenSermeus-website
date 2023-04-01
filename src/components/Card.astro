@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "@utils";
+import { Icon } from "astro-icon";
 export interface Props {
   title: string;
   body: string;
@@ -14,6 +15,7 @@ export interface Props {
 }
 //not sure why but if destructuring props here, it doesn't work
 const props = Astro.props;
+console.log(props);
 ---
 
 <li class="flex w-96 mt-5 mb-5">
@@ -45,6 +47,22 @@ const props = Astro.props;
           {props.title}
           <span>&rarr;</span>
         </h2>
+        <div class="card- card-actions">
+          {
+            props.github && (
+              <a href={props.github} target="_blank">
+                <Icon name="mdi:github" size="2rem" />
+              </a>
+            )
+          }
+          {
+            props.live && (
+              <a href={props.live}>
+                <Icon name="mdi:web" size="2rem" targer="_blank" />
+              </a>
+            )
+          }
+        </div>
         <p>{props.body}</p>
         {props.date && <p> Publié le : {formatDate(props.date)}</p>}
         <div>

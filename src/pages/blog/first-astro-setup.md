@@ -4,9 +4,9 @@ title: "First astro"
 author: "Steven Sermeus"
 date: "2023-04-01"
 live: "string"
-tags: ["Astro"]
-github: "string"
-description: "string"
+tags: ["Astro", "tutorial", "blog"]
+github: "https://github.com"
+description: "Un premier article sur Astro ! Les bases de la création d'un site statique avec Astro."
 type: "post"
 image: { src: "blog/astro.webp", alt: "astro logo" }
 robots: "boolean"

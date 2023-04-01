@@ -4,7 +4,17 @@ import Base from "@layouts/Base.astro";
 import type { FrontmatterType } from "@types";
 import type { MarkdownInstance } from "astro";
 
-const posts: MarkdownInstance<FrontmatterType>[] = await Astro.glob("./*.md");
+const postsNoOrder: MarkdownInstance<FrontmatterType>[] = await Astro.glob(
+  "./*.md"
+);
+//order post by date
+
+const posts = postsNoOrder.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.date);
+  const dateB = new Date(b.frontmatter.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
 const frontmatter = {
   type: "website",
   title: "Blog",
@@ -41,7 +51,9 @@ const frontmatter = {
               date={post.frontmatter.date}
               image={post.frontmatter.image?.src}
               alt={post.frontmatter.image?.alt}
-              new={index < 3}
+              new={index === 0}
+              github={post.frontmatter.github}
+              live={post.frontmatter.live}
             />
           );
         })
