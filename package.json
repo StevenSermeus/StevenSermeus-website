@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "@stevensermeus/stevensermeus.be",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "docker build -t stevensermeus.be . && docker run -p 6969:8080 stevensermeus.be"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.4",

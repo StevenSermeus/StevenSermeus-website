@@ -1,25 +1,51 @@
 ---
+import Card from "@components/Card.astro";
 import Base from "@layouts/Base.astro";
 import type { FrontmatterType } from "@types";
 import type { MarkdownInstance } from "astro";
 
 const posts: MarkdownInstance<FrontmatterType>[] = await Astro.glob("./*.md");
-// const posts = await Astro.glob("./*.md");
+const frontmatter = {
+  type: "website",
+  title: "Blog",
+  date: "2023-04-01",
+  tags: [],
+  robots: false,
+  image: {
+    src: "/assets/images/astro.jpg",
+    alt: "Astro",
+  },
+  author: "Steven Sermeus",
+  description: "Navigate to find the best content",
+};
 ---
 
-<Base title="Blog">
+<Base
+  frontmatter={frontmatter}
+  title={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.image}
+  robots={frontmatter.robots}
+>
   <div>
-    <h1>Blog</h1>
-    <div>
+    <h1 class="text-4xl font-bold text-center">Blog</h1>
+    <ul class="flex-tow flex flex-wrap justify-around">
       {
         posts.map((post, index) => {
           return (
-            <div>
-              {post.frontmatter.title} {index}
-            </div>
+            <Card
+              title={post.frontmatter.title}
+              href={post.url || ""}
+              body={post.frontmatter.description}
+              tags={post.frontmatter.tags}
+              date={post.frontmatter.date}
+              image={post.frontmatter.image?.src}
+              alt={post.frontmatter.image?.alt}
+              new={index < 3}
+            />
           );
         })
       }
-    </div>
+    </ul>
   </div>
 </Base>

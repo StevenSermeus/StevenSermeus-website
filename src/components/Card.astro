@@ -1,2 +1,62 @@
 ---
+import { formatDate } from "@utils";
+export interface Props {
+  title: string;
+  body: string;
+  href: string;
+  tags?: string[];
+  image?: string;
+  alt?: string;
+  date?: string;
+  github?: string;
+  live?: string;
+  new?: boolean;
+}
+//not sure why but if destructuring props here, it doesn't work
+const props = Astro.props;
 ---
+
+<li class="flex w-96 mt-5 mb-5">
+  <a href={props.href}>
+    <div
+      class="indicator w-96 card bg-base-100 shadow-xl hover:scale-105 transition"
+    >
+      {
+        props.new && (
+          <div class="absolute top-0 right-0 m-2">
+            <span class="badge badge-sm badge-primary">New</span>
+          </div>
+        )
+      }
+      {
+        props.image && (
+          <figure class="px-10 pt-10">
+            <img
+              src={"/assets/" + props.image}
+              alt={props.alt || "image"}
+              class="rounded-xl"
+            />
+          </figure>
+        )
+      }
+
+      <div class="card-body">
+        <h2 class="card-title">
+          {props.title}
+          <span>&rarr;</span>
+        </h2>
+        <p>{props.body}</p>
+        {props.date && <p> Publié le : {formatDate(props.date)}</p>}
+        <div>
+          <div class="card-actions justify-end">
+            {
+              props.tags?.map((tag) => (
+                <div class="badge badge-outline">{tag}</div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</li>

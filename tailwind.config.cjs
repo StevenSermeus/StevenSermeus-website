@@ -9,5 +9,15 @@ module.exports = {
       },
     },
   },
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    themes: ["dark", "cupcake"],
+  },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };
