@@ -13,9 +13,11 @@ interface Props {
   robots?: boolean;
   url?: string | URL;
   frontmatter: FrontmatterType;
+  keywords?: string;
 }
 
-const { title, description, image, frontmatter, robots } = Astro.props;
+const { title, description, image, frontmatter, robots, keywords } =
+  Astro.props;
 
 const date = new Date();
 const year = date.getFullYear();
@@ -30,9 +32,9 @@ const year = date.getFullYear();
       url={Astro.url}
       image={image}
       description={description}
-      description={description}
       robots={robots}
       frontmatter={frontmatter}
+      keywords={keywords || "steven sermeus"}
     />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

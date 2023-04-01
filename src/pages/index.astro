@@ -3,8 +3,9 @@ import Base from "@layouts/Base.astro";
 import Theme from "@components/Theme.astro";
 const frontmatter = {
   type: "website",
-  title: "Salut",
-  description: "Salut",
+  title: "Welcome",
+  description:
+    "Bienvenue sur mon site web ! Je suis Steven Sermeus, développeur web fullstack. Je suis passionné par le développement web et je suis toujours à la recherche de nouvelles technologies à découvrir.",
   date: "2023-04-01",
   tags: [""],
   robots: false,
@@ -17,12 +18,12 @@ const frontmatter = {
 ---
 
 <Base
-  title="Salut"
   frontmatter={frontmatter}
   title={frontmatter.title}
   description={frontmatter.description}
   image={frontmatter.image}
   robots={frontmatter.robots}
+  keywords={"steven, sermeus, developer, web, front-end, back-end, fullstack, javascript, typescript, react, astro, next.js, node.js,tailwind "}
 >
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col lg:flex-row">
