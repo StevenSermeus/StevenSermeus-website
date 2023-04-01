@@ -1,8 +1,8 @@
 {
-  "title": "My Astro Blog",
-  "description": "My musings about the Astro framework",
+  "title": "Steven Sermeus",
+  "description": "Site web de Steven Sermeus, powered by Astro",
   "image": {
-    "src": "/images/image-default.jpg",
-    "alt": "My Astro Blog"
+    "src": "/images/steven.png",
+    "alt": "Steven Sermeus"
   }
 }

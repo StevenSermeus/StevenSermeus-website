@@ -2,9 +2,6 @@
 import Base from "@layouts/Base.astro";
 import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
-import { formatDate } from "@utils";
-const posts = await Astro.glob("./blog/*.md");
-const postsCount = posts.length;
 
 const frontmatter = {
   type: "website",
