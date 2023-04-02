@@ -2,7 +2,10 @@
 import Base from "@layouts/Base.astro";
 import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
-
+import CardProject from "@components/CardProject.astro";
+import projects from "src/data/project";
+import CardExp from "@components/CardExp.astro";
+import experiences from "src/data/expreriences";
 const frontmatter = {
   type: "website",
   title: "Welcome",
@@ -27,7 +30,7 @@ const frontmatter = {
   robots={frontmatter.robots}
   keywords={"steven, sermeus, developer, web, front-end, back-end, fullstack, javascript, typescript, react, astro, next.js, node.js,tailwind "}
 >
-  <div class="hero min-h-screen bg-base-200">
+  <div class="hero min-h-screen">
     <div class="hero-content flex-col lg:flex-row">
       <div class="max-w-sm rounded-lg">
         <Image
@@ -70,29 +73,85 @@ const frontmatter = {
           Mes technologies favorites
         </h3>
         <div
-          class="flex flex-row justify-between align-middle md:w-1/2 flex-wrap"
+          class="flex flex-row justify-around align-middle md:w-1/2 flex-wrap"
         >
-          <Icon name="logos:react" size="3rem" />
-          <Icon name="logos:nextjs" size="4rem" />
-          <Icon name="logos:nodejs-icon" size="3rem" />
-          <Icon name="vscode-icons:file-type-typescript-official" size="3rem" />
-          <Icon name="logos:javascript" size="2.7rem" />
-          <Icon name="logos:tailwindcss-icon" size="3rem" />
-          <Icon name="logos:astro" size="3rem" />
-          <Icon name="logos:docker-icon" size="3rem" />
-          <Icon name="logos:python" size="3.5rem" />
-          <Icon name="logos:solidjs-icon" size="3rem" />
-          <Icon name="logos:postgresql" size="3rem" />
-          <Icon name="logos:linux-tux" size="3.5rem" />
-          <Icon name="logos:redis" size="2.7rem" />
-          <Icon name="logos:prisma" size="3rem" />
-          <Icon name="logos:java" size="3rem" />
-          <Icon name="vscode-icons:file-type-csharp2" size="3rem" />
+          <Icon name="logos:react" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:nextjs" size="4rem" class="mx-4 mt-2" />
+          <Icon name="logos:nodejs-icon" size="3rem" class="mx-4 mt-2" />
+          <Icon
+            name="vscode-icons:file-type-typescript-official"
+            class="mx-4 mt-2"
+            size="3rem"
+          />
+          <Icon name="logos:javascript" size="2.7rem" class="mx-4 mt-2" />
+          <Icon name="logos:tailwindcss-icon" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:astro" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:docker-icon" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:python" size="3.5rem" class="mx-4 mt-2" />
+          <Icon name="logos:solidjs-icon" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:postgresql" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:linux-tux" size="3.5rem" class="mx-4 mt-2" />
+          <Icon name="logos:redis" size="2.7rem" class="mx-4 mt-2" />
+          <Icon name="logos:prisma" size="3rem" class="mx-4 mt-2" />
+          <Icon name="logos:java" size="3rem" class="mx-4 mt-2" />
+          <Icon
+            name="vscode-icons:file-type-csharp2"
+            size="3rem"
+            class="mx-4"
+          />
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <h2></h2>
+  <div class="hero">
+    <div class="hero-content flex-col lg:flex:row w-full">
+      <div>
+        <h2 class="text-2xl md:text-4xl font-bold underline text-center">
+          Mes expériences professionnels
+        </h2>
+        <ul class="flex-tow flex flex-wrap justify-around">
+          {
+            experiences.map((experience) => {
+              return (
+                <CardExp
+                  enterprise={experience.enterprise}
+                  jobTitle={experience.jobTitle}
+                  body={experience.body}
+                  tags={experience.tags}
+                  from={experience.from}
+                  to={experience.to}
+                  image={experience.image}
+                  alt={experience.alt}
+                  enterpriseLink={experience.enterpriseLink}
+                />
+              );
+            })
+          }
+        </ul>
+        <div class="mt-10">
+          <h2 class="text-2xl md:text-4xl font-bold underline text-center">
+            Mes projets
+          </h2>
+          <ul class="flex-tow flex flex-wrap justify-around">
+            {
+              projects.map((project) => {
+                return (
+                  <CardProject
+                    title={project.title}
+                    body={project.description}
+                    tags={project.tags}
+                    image={project.image.src}
+                    alt={project.image.alt}
+                    live={project.live}
+                    github={project.github}
+                    technologies={project.technologies}
+                  />
+                );
+              })
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </Base>

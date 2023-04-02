@@ -1,15 +1,25 @@
 const projects = [
   {
-    title: "Project 1",
-    github: "https://github.com",
-    description: "This is a project",
-    live: "https://github.com",
+    title: "Stevensermeus.be",
+    github: "https://github.com/StevenSermeus/StevenSermeus-website",
+    description: `Il s'agit de mon site web personnel. Il a été développé avec Astro.
+       Il est hébergé sur ma propre infrastructure grâce à docker et ngnix.`,
+    live: "https://stevensermeus.be",
     status: "finished",
     image: {
-      src: "https://via.placeholder.com/150",
-      alt: "Project 1",
+      src: "/stevensermeus.png",
+      alt: "stevensermeus.be",
     },
-    tags: ["tag1", "tag2"],
-    technologies: ["tech1", "tech2"],
+    tags: ["website", "blog"],
+    technologies: [
+      "astro",
+      "tailwindcss",
+      "typescript",
+      "docker",
+      "nginx",
+      "daisyui",
+    ],
   },
 ];
+
+export default projects;

@@ -8,6 +8,7 @@ description: "Le QDD est une phylosophie d'apprentissage qui permet de se former
 type: "post"
 image: { src: "blog/astro.webp", alt: "astro logo" }
 robots: false
+lecture: 5
 ---
 
 # Coming soon

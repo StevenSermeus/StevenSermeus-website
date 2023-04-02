@@ -2,6 +2,7 @@
 import Base from "./Base.astro";
 import type { MarkdownLayoutProps } from "astro";
 import type { FrontmatterType } from "../types";
+import { Icon } from "astro-icon";
 type Props = MarkdownLayoutProps<FrontmatterType>;
 const frontmatter = Astro.props.frontmatter;
 import { formatDate } from "@utils";
@@ -22,6 +23,20 @@ import { formatDate } from "@utils";
         <p class="text-sm text-gray-500 mt-2 justify-end">
           Publié le : {formatDate(frontmatter.date)}
         </p>
+      )
+    }
+    {
+      frontmatter.lecture && (
+        <div class="flex flex-row">
+          <Icon
+            name="mdi:clock-time-eight-outline"
+            size="1rem"
+            class="my-auto"
+          />
+          <p class="text-sm text-gray-500 justify-end ml-2 my-auto">
+            Lecture: {frontmatter.lecture} min
+          </p>
+        </div>
       )
     }
     {

@@ -12,4 +12,5 @@ export type FrontmatterType = {
     alt: string;
   };
   robots: boolean;
+  lecture?: number;
 };

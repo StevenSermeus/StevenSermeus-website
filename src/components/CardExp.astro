@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon";
+import { Image } from "@astrojs/image/components";
+export interface Props {
+  enterprise: string;
+  jobTitle: string;
+  body: string;
+  from: string;
+  to: string;
+  tags?: string[];
+  image?: string;
+  alt?: string;
+  enterpriseLink?: string;
+}
+const props = Astro.props;
+---
+
+<li class="flex w-auto mt-5 mb-5">
+  <div class="w-96 card bg-base-100 shadow-xl hover:scale-105 transition">
+    {
+      props.image && (
+        <figure class="px-10 pt-10">
+          <Image
+            src={"/assets/" + props.image}
+            alt={props.alt || "image"}
+            height={1080}
+            width={1080}
+            aspectRatio={"1:1"}
+            class={"rounded-xl"}
+          />
+        </figure>
+      )
+    }
+    <a href={props.enterpriseLink} target="_blank"
+      ><h2
+        class={props.enterpriseLink
+          ? " link link-hover text-3xl font-bold text-center"
+          : "text-3xl font-bold text-center"}
+        style="padding: 0 1rem 1rem 1rem;"
+      >
+        {props.enterprise}
+        {props.enterpriseLink && <span>&rarr;</span>}
+      </h2></a
+    >
+
+    <h3 class="text-2xl text-center">{props.jobTitle}</h3>
+    <h4 class="text-xl text-center">Du {props.from} au {props.to}</h4>
+    <div class="card-body">
+      <h2 class="card-title">
+        {props.title}
+      </h2>
+      <p class="card-body" style="padding: 0 1rem 1rem 1rem;">{props.body}</p>
+      <div>
+        <div class="card-actions justify-end">
+          {
+            props.tags?.map((tag) => (
+              <div class="badge badge-outline">{tag}</div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

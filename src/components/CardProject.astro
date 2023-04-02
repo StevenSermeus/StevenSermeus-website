@@ -1,0 +1,78 @@
+---
+import { formatDate } from "@utils";
+import { Icon } from "astro-icon";
+import { Image } from "@astrojs/image/components";
+export interface Props {
+  title: string;
+  body: string;
+  tags?: string[];
+  image?: string;
+  alt?: string;
+  github?: string;
+  live?: string;
+  technologies?: string[];
+}
+const props = Astro.props;
+---
+
+<li class="flex md:w-92 mt-5 mb-5">
+  <div class="w-96 card bg-base-100 shadow-xl hover:scale-105 transition">
+    {
+      props.image && (
+        <figure class="px-10 pt-10">
+          <Image
+            src={"/assets/" + props.image}
+            alt={props.alt || "image"}
+            width={1920}
+            height={1080}
+            class={"rounded-xl"}
+          />
+        </figure>
+      )
+    }
+
+    <div class="card-body">
+      <a href={props.live} target="_blank">
+        <h2 class={`card-title ${props.live ? "link link-hover" : ""}`}>
+          {props.title}
+          {props.live && <span>&rarr;</span>}
+        </h2>
+      </a>
+      <div class="card- card-actions">
+        {
+          props.github && (
+            <a href={props.github} target="_blank">
+              <Icon name="mdi:github" size="2rem" />
+            </a>
+          )
+        }
+        {
+          props.live && (
+            <a href={props.live} target="_blank">
+              <Icon name="mdi:web" size="2rem" targer="_blank" />
+            </a>
+          )
+        }
+      </div>
+      <div>
+        <div class="card-actions justify-start">
+          {
+            props.technologies?.map((tag) => (
+              <div class="badge badge-outline badge-primary">{tag}</div>
+            ))
+          }
+        </div>
+      </div>
+      <p>{props.body}</p>
+      <div>
+        <div class="card-actions justify-end">
+          {
+            props.tags?.map((tag) => (
+              <div class="badge badge-outline">{tag}</div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
