@@ -8,18 +8,23 @@ const experiences: {
   image?: string;
   alt?: string;
   enterpriseLink?: string;
+  width?: number;
+  height?: number;
 }[] = [
   {
-    enterprise: "Demo",
-    jobTitle: "Demo",
-    body: `lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam.`,
+    enterprise: "Acsone SA",
+    jobTitle: "Stage développeur odoo",
+    body: `J'ai eu la chance d'effectuer mon stage de fin d'étude chez Acsone. Dans le cadre de ce stage, 
+    j'ai pu apprendre à utiliser Odoo et à développer des modules pour ce dernier.`,
     from: "1 février 2023",
     to: "15 mai 2023",
 
-    tags: ["python", "linux", "open-source", "postgresql"],
-    image: "/demo.png",
-    alt: "demo",
-    enterpriseLink: "https://www.demo.com/",
+    tags: ["odoo", "python", "linux", "open-source", "postgresql"],
+    image: "/acsone.png",
+    alt: "acsone",
+    enterpriseLink: "https://www.acsone.eu",
+    width: 280,
+    height: 60,
   },
 ];
 

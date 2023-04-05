@@ -3,7 +3,7 @@ import Base from "@layouts/Base.astro";
 import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 import CardProject from "@components/CardProject.astro";
-import projects from "src/data/project";
+import projects from "../data/project";
 import CardExp from "@components/CardExp.astro";
 import experiences from "src/data/expreriences";
 const frontmatter = {
@@ -31,7 +31,7 @@ const frontmatter = {
   keywords={"steven, sermeus, developer, web, front-end, back-end, fullstack, javascript, typescript, react, astro, next.js, node.js,tailwind "}
 >
   <div class="hero min-h-screen">
-    <div class="hero-content flex-col lg:flex-row">
+    <div class="hero-content flex-col lg:flex-row p-0">
       <div class="max-w-sm rounded-lg">
         <Image
           src="/assets/steven.png"
@@ -60,20 +60,28 @@ const frontmatter = {
         </h3>
         <div class="flex flex-row">
           <a href="https://github.com/StevenSermeus" target="_blank">
-            <Icon name="mdi:github" size="3rem" />
+            <Icon
+              name="mdi:github"
+              size="3rem"
+              class="hover:scale-110 transition"
+            />
           </a>
           <a
             href="https://www.linkedin.com/in/steven-sermeus/?originalSubdomain=be"
             target="_blank"
           >
-            <Icon name="mdi:linkedin" size="3rem" />
+            <Icon
+              name="mdi:linkedin"
+              size="3.2rem"
+              class="hover:scale-110 transition"
+            />
           </a>
         </div>
         <h3 class="text-2xl mb-3 mt-3 font-bold underline">
           Mes technologies favorites
         </h3>
         <div
-          class="flex flex-row justify-around align-middle md:w-1/2 flex-wrap"
+          class="flex flex-row justify-around align-middle md:w-full lg:w-1/2 flex-wrap sm:w-full"
         >
           <Icon name="logos:react" size="3rem" class="mx-4 mt-2" />
           <Icon name="logos:nextjs" size="4rem" class="mx-4 mt-2" />
@@ -104,7 +112,7 @@ const frontmatter = {
     </div>
   </div>
   <div class="hero">
-    <div class="hero-content flex-col lg:flex:row w-full">
+    <div class="hero-content flex-col lg:flex:row w-full p-0">
       <div>
         <h2 class="text-2xl md:text-4xl font-bold underline text-center">
           Mes expériences professionnels
@@ -123,6 +131,8 @@ const frontmatter = {
                   image={experience.image}
                   alt={experience.alt}
                   enterpriseLink={experience.enterpriseLink}
+                  height={experience.height}
+                  width={experience.width}
                 />
               );
             })

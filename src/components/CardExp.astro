@@ -11,6 +11,8 @@ export interface Props {
   image?: string;
   alt?: string;
   enterpriseLink?: string;
+  width?: number;
+  height?: number;
 }
 const props = Astro.props;
 ---
@@ -23,9 +25,8 @@ const props = Astro.props;
           <Image
             src={"/assets/" + props.image}
             alt={props.alt || "image"}
-            height={1080}
-            width={1080}
-            aspectRatio={"1:1"}
+            width={props.width || 640}
+            height={props.height || 360}
             class={"rounded-xl"}
           />
         </figure>

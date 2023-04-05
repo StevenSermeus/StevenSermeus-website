@@ -13,20 +13,28 @@ export interface Props {
   github?: string;
   live?: string;
   new?: boolean;
+  draft?: boolean;
 }
 //not sure why but if destructuring props here, it doesn't work
 const props = Astro.props;
 ---
 
 <li class="flex md:w-96 mt-5 mb-5">
-  <a href={props.href}>
+  <a href={props?.draft ? "" : props.href}>
     <div
       class="indicator w-96 card bg-base-100 shadow-xl hover:scale-105 transition"
     >
       {
-        props.new && (
+        props.new && !props.draft && (
           <div class="absolute top-0 right-0 m-2">
             <span class="badge badge-sm badge-primary">New</span>
+          </div>
+        )
+      }
+      {
+        props.draft && (
+          <div class="absolute top-0 right-0 m-2">
+            <span class="badge badge-sm badge-error">soon</span>
           </div>
         )
       }
@@ -36,8 +44,8 @@ const props = Astro.props;
             <Image
               src={"/assets/" + props.image}
               alt={props.alt || "image"}
-              width={1920}
-              height={1080}
+              width={640}
+              height={360}
               class={"rounded-xl"}
             />
           </figure>

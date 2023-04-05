@@ -13,4 +13,6 @@ export type FrontmatterType = {
   };
   robots: boolean;
   lecture?: number;
+  new?: boolean;
+  draft?: boolean;
 };

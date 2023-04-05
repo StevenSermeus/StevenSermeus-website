@@ -11,10 +11,20 @@ export async function getStaticPaths({ paginate }) {
   );
   //order post by date
 
-  const posts = postsNoOrder.sort((a, b) => {
+  let posts = postsNoOrder.sort((a, b) => {
     const dateA = new Date(a.frontmatter.date);
     const dateB = new Date(b.frontmatter.date);
     return dateB.getTime() - dateA.getTime();
+  });
+
+  //add new status to the first post not in draft
+  let newPosts = false;
+  posts = posts.map((post, index) => {
+    if (!newPosts && !post.frontmatter.draft) {
+      newPosts = true;
+      return { ...post, new: true };
+    }
+    return post;
   });
 
   return paginate(posts, {
@@ -52,6 +62,7 @@ const frontmatter = {
         page.data.map((post, index) => {
           return (
             <Card
+              draft={post.frontmatter.draft}
               title={post.frontmatter.title}
               href={post.url || ""}
               body={post.frontmatter.description}
@@ -59,7 +70,7 @@ const frontmatter = {
               date={post.frontmatter.date}
               image={post.frontmatter.image?.src}
               alt={post.frontmatter.image?.alt}
-              new={index === 0}
+              new={post.new}
               github={post.frontmatter.github}
               live={post.frontmatter.live}
             />
