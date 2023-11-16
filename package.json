@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "^1.2.1",
     "@astrojs/tailwind": "^3.1.1",
     "astro": "^2.1.9",
-    "astro-compress": "^1.1.35",
+    "astro-compress": "^2.2.3",
     "daisyui": "^2.51.5",
     "shard": "^1.1.0",
     "sharp": "^0.32.0",
